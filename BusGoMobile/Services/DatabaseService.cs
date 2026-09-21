@@ -53,4 +53,22 @@ public class DatabaseService
 
         return results.FirstOrDefault();
     }
+
+    // Tüm kategorileri getir
+    public async Task<List<Category>> GetCategoriesAsync()
+    {
+        await InitAsync();
+
+        return await _db.QueryAsync<Category>("SELECT * FROM Category ORDER BY Id;");
+    }
+
+    // Tüm şehirleri getir
+    public async Task<List<City>> GetCitiesAsync()
+    {
+        await InitAsync();
+
+        return await _db.QueryAsync<City>("SELECT * FROM City ORDER BY Name;");
+    }
+
+
 }
