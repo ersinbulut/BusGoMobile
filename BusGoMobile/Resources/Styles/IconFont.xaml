@@ -7,7 +7,6 @@
     <x:String x:Key="IconSearch">&#xe8b6;</x:String>
     <x:String x:Key="IconEvent">&#xe878;</x:String>
     <x:String x:Key="IconLocationOn">&#xe0c8;</x:String>
-    <x:String x:Key="IconChevronRight">&#xe5cc;</x:String>
     <x:String x:Key="IconArrowForward">&#xe5c8;</x:String>
     <x:String x:Key="IconHelp">&#xe8fd;</x:String>
 
@@ -35,6 +34,17 @@
     <x:String x:Key="IconHistory">&#xe889;</x:String>
 
     <x:String x:Key="IconFavorite">&#xe87d;</x:String>
+
+    <Color x:Key="BgInverseSurface">#213145</Color>
+
+    <x:String x:Key="IconTune">&#xe429;</x:String>
+    <x:String x:Key="IconArrowDownward">&#xe5db;</x:String>
+    <x:String x:Key="IconChair">&#xefe6;</x:String>
+    <x:String x:Key="IconSchedule">&#xe8b5;</x:String>
+    <x:String x:Key="IconExpandMore">&#xe5cf;</x:String>
+    <x:String x:Key="IconEditCalendar">&#xe742;</x:String>
+    <x:String x:Key="IconChevronRight">&#xe5cc;</x:String>
+
 
 
 
