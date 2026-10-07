@@ -57,6 +57,10 @@
     <Color x:Key="BgError">#ba1a1a</Color>
     <Color x:Key="BgErrorContainer">#ffdad6</Color>
 
+    <x:String x:Key="IconMale">&#xe58e;</x:String>
+    <x:String x:Key="IconFemale">&#xe590;</x:String>
+    <x:String x:Key="IconSeat">&#xe63f;</x:String>
+    <x:String x:Key="IconContactMail">&#xe0d0;</x:String>
 
 
 </ResourceDictionary>
