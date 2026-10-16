@@ -4,14 +4,27 @@
        x:Class="BusGoMobile.AppShell"
        FlyoutBehavior="Disabled">
 
-    <!-- Başlangıç: HomePage (login'i sonra öne alacağız) -->
+    <!-- BAŞLANGIÇ: Splash -->
     <ShellContent
-        Route="TripListPage"
-        ContentTemplate="{DataTemplate pages:TripListPage}"
+        Route="SplashPage"
+        ContentTemplate="{DataTemplate pages:SplashPage}"
         Shell.TabBarIsVisible="False" />
 
+    <!-- GİRİŞ -->
     <ShellContent
-        Route="MyTripsPage" 
+        Route="LoginPage"
+        ContentTemplate="{DataTemplate pages:LoginPage}"
+        Shell.TabBarIsVisible="False" />
+
+    <!-- ANA SAYFA -->
+    <ShellContent
+        Route="HomePage"
+        ContentTemplate="{DataTemplate pages:HomePage}"
+        Shell.TabBarIsVisible="False" />
+
+    <!-- DİĞER TAB SAYFALARI -->
+    <ShellContent
+        Route="MyTripsPage"
         ContentTemplate="{DataTemplate pages:MyTripsPage}"
         Shell.TabBarIsVisible="False" />
 
@@ -23,11 +36,6 @@
     <ShellContent
         Route="ProfilePage"
         ContentTemplate="{DataTemplate pages:ProfilePage}"
-        Shell.TabBarIsVisible="False" />
-
-    <ShellContent
-        Route="LoginPage"
-        ContentTemplate="{DataTemplate pages:LoginPage}"
         Shell.TabBarIsVisible="False" />
 
 </Shell>

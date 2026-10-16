@@ -1,40 +1,56 @@
+using System.Text.RegularExpressions;
 using BusGoMobile.Models;
 using BusGoMobile.Services;
-using System.Text.RegularExpressions;
 
 namespace BusGoMobile.Pages;
 
 public partial class RegisterPage : ContentPage
 {
     private readonly DatabaseService _db;
+    private bool _busy = false;
+
     public RegisterPage(DatabaseService db)
     {
         InitializeComponent();
         _db = db;
     }
 
+    // Focus: hangi input odaklanırsa onun Border'ını bul, turuncu yap
+    private void OnEntryFocused(object sender, FocusEventArgs e)
+    {
+        if (sender is Entry entry && entry.Parent?.Parent is Border border)
+            border.Stroke = (Color)Application.Current.Resources["BgSecondary"];
+        else if (sender is Entry e2 && e2.Parent is Border b2)
+            b2.Stroke = (Color)Application.Current.Resources["BgSecondary"];
+    }
+
+    private void OnEntryUnfocused(object sender, FocusEventArgs e)
+    {
+        if (sender is Entry entry && entry.Parent?.Parent is Border border)
+            border.Stroke = (Color)Application.Current.Resources["BgOutlineVariant"];
+        else if (sender is Entry e2 && e2.Parent is Border b2)
+            b2.Stroke = (Color)Application.Current.Resources["BgOutlineVariant"];
+    }
 
     // Şifre göster/gizle
     private void OnTogglePasswordTapped(object sender, TappedEventArgs e)
     {
         PasswordEntry.IsPassword = !PasswordEntry.IsPassword;
-
         PassEyeIcon.Text = PasswordEntry.IsPassword
             ? (string)Application.Current.Resources["IconVisibility"]
             : (string)Application.Current.Resources["IconVisibilityOff"];
     }
 
-    // Şifre gücü çubukları
+    // Şifre gücü
     private void OnPasswordChanged(object sender, TextChangedEventArgs e)
     {
         string val = e.NewTextValue ?? "";
 
         var bos = (Color)Application.Current.Resources["BgSurfaceContainerHighest"];
-        var zayif = (Color)Application.Current.Resources["BgMetro"];      // kırmızı
-        var orta = (Color)Application.Current.Resources["BgSecondary"];   // turuncu
-        var guclu = Color.FromArgb("#16a34a");                            // yeşil
+        var zayif = (Color)Application.Current.Resources["BgMetro"];
+        var orta = (Color)Application.Current.Resources["BgSecondary"];
+        var guclu = Color.FromArgb("#16a34a");
 
-        // Önce hepsini sıfırla
         StrengthBar1.Color = bos;
         StrengthBar2.Color = bos;
         StrengthBar3.Color = bos;
@@ -55,9 +71,10 @@ public partial class RegisterPage : ContentPage
         if (puan >= 3) { StrengthBar1.Color = guclu; StrengthBar2.Color = guclu; StrengthBar3.Color = guclu; }
     }
 
-    // Kayıt butonu — şimdilik sadece basit doğrulama, SQLite sonra
-    private async void OnRegisterClicked(object sender, EventArgs e)
+    private async void OnRegisterClicked(object sender, TappedEventArgs e)
     {
+        if (_busy) return;
+
         if (string.IsNullOrWhiteSpace(FirstNameEntry.Text) ||
             string.IsNullOrWhiteSpace(LastNameEntry.Text) ||
             string.IsNullOrWhiteSpace(EmailEntry.Text) ||
@@ -73,8 +90,11 @@ public partial class RegisterPage : ContentPage
             return;
         }
 
+        SetBusy(true);
+
         if (await _db.EmailExistsAsync(EmailEntry.Text.Trim()))
         {
+            SetBusy(false);
             await DisplayAlert("Kayıtlı E-posta", "Bu e-posta ile zaten bir hesap var.", "Tamam");
             return;
         }
@@ -93,12 +113,34 @@ public partial class RegisterPage : ContentPage
         try
         {
             await _db.AddUserAsync(user);
-            await DisplayAlert("Başarılı", "Hesabınız oluşturuldu!", "Tamam");
+            SetBusy(false);
+            await DisplayAlert("Başarılı", "Hesabınız oluşturuldu! Giriş yapabilirsiniz.", "Tamam");
+            await Shell.Current.GoToAsync("//LoginPage");
         }
         catch (Exception ex)
         {
+            SetBusy(false);
             await DisplayAlert("Hata", "Kayıt sırasında bir sorun oluştu: " + ex.Message, "Tamam");
         }
+    }
+
+    private void SetBusy(bool busy)
+    {
+        _busy = busy;
+        RegisterButtonContent.IsVisible = !busy;
+        RegisterSpinner.IsVisible = busy;
+        RegisterSpinner.IsRunning = busy;
+        RegisterButtonBorder.Opacity = busy ? 0.85 : 1.0;
+    }
+
+    private async void OnGoToLoginTapped(object sender, TappedEventArgs e)
+    {
+        await Shell.Current.GoToAsync("..");
+    }
+
+    private async void OnBackTapped(object sender, TappedEventArgs e)
+    {
+        await Shell.Current.GoToAsync("..");
     }
 
 }

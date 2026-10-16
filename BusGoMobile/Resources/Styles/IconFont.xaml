@@ -7,7 +7,7 @@
     <x:String x:Key="IconSearch">&#xe8b6;</x:String>
     <x:String x:Key="IconEvent">&#xe878;</x:String>
     <x:String x:Key="IconLocationOn">&#xe0c8;</x:String>
-    <x:String x:Key="IconArrowForward">&#xe5c8;</x:String>
+   
     <x:String x:Key="IconHelp">&#xe8fd;</x:String>
 
 
@@ -26,7 +26,7 @@
     <x:String x:Key="IconFlight">&#xe539;</x:String>
     <x:String x:Key="IconHotel">&#xe53a;</x:String>
     <x:String x:Key="IconCar">&#xe531;</x:String>
-    <x:String x:Key="IconTripOrigin">&#xe57b;</x:String>
+  
     <x:String x:Key="IconCalendar">&#xe935;</x:String>
     <x:String x:Key="IconPerson">&#xe7fd;</x:String>
     <x:String x:Key="IconVerified">&#xef76;</x:String>
@@ -61,6 +61,15 @@
     <x:String x:Key="IconFemale">&#xe590;</x:String>
     <x:String x:Key="IconSeat">&#xe63f;</x:String>
     <x:String x:Key="IconContactMail">&#xe0d0;</x:String>
+
+    <x:String x:Key="IconCreditCard">&#xe870;</x:String>
+    <x:String x:Key="IconCalendarMonth">&#xebcc;</x:String>
+
+    <x:String x:Key="IconGoogle">&#xea88;</x:String>
+    <x:String x:Key="IconApple">&#xe0f0;</x:String>
+    <x:String x:Key="IconArrowForward">&#xe5c8;</x:String>
+    <x:String x:Key="IconTripOrigin">&#xe57b;</x:String>
+
 
 
 </ResourceDictionary>

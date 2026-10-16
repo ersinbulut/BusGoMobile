@@ -56,9 +56,8 @@ public partial class PassengerInfoPage : ContentPage
             return;
         }
 
-        await DisplayAlert("Bilgiler Alındı",
-            $"{FirstNameEntry.Text} {LastNameEntry.Text} için ödeme adımına geçiliyor. (Ödeme sayfası sonra eklenecek.)",
-            "Tamam");
+        await Shell.Current.GoToAsync(
+               $"PaymentPage?firstName={FirstNameEntry.Text}&lastName={LastNameEntry.Text}&phone={PhoneEntry.Text}&email={EmailEntry.Text}&gender={_gender}");
     }
 
     private async void OnBackTapped(object sender, TappedEventArgs e)

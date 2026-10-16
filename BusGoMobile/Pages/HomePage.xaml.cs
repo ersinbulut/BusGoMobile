@@ -21,6 +21,10 @@ public partial class HomePage : ContentPage
     {
         base.OnAppearing();
 
+        //Giriş yapan kullanıcının adını göster
+        string isim = Preferences.Get("UserName", "Kullanıcı");
+        GreetingLabel.Text = $"Hoş geldin, {isim} 👋";
+
         if (CategoriesView.ItemsSource == null)
         {
             var kategoriler = await _db.GetCategoriesAsync();
