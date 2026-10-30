@@ -115,7 +115,7 @@ public partial class RegisterPage : ContentPage
             await _db.AddUserAsync(user);
             SetBusy(false);
             await DisplayAlert("Başarılı", "Hesabınız oluşturuldu! Giriş yapabilirsiniz.", "Tamam");
-            await Shell.Current.GoToAsync("//LoginPage");
+            await Shell.Current.GoToAsync("..");
         }
         catch (Exception ex)
         {
@@ -142,5 +142,5 @@ public partial class RegisterPage : ContentPage
     {
         await Shell.Current.GoToAsync("..");
     }
-
 }
+

@@ -8,8 +8,6 @@
     <x:String x:Key="IconEvent">&#xe878;</x:String>
     <x:String x:Key="IconLocationOn">&#xe0c8;</x:String>
    
-    <x:String x:Key="IconHelp">&#xe8fd;</x:String>
-
 
     <x:String x:Key="IconMail">&#xe158;</x:String>
     <x:String x:Key="IconLock">&#xe897;</x:String>
@@ -69,6 +67,16 @@
     <x:String x:Key="IconApple">&#xe0f0;</x:String>
     <x:String x:Key="IconArrowForward">&#xe5c8;</x:String>
     <x:String x:Key="IconTripOrigin">&#xe57b;</x:String>
+
+    <x:String x:Key="IconSettings">&#xe8b8;</x:String>
+    <x:String x:Key="IconEdit">&#xe3c9;</x:String>
+    <x:String x:Key="IconPayment">&#xe8a1;</x:String>
+    <x:String x:Key="IconHelp">&#xe8fd;</x:String>
+    <x:String x:Key="IconLogout">&#xe9ba;</x:String>
+    <x:String x:Key="IconUpcoming">&#xe8df;</x:String>
+    <x:String x:Key="IconDone">&#xe876;</x:String>
+    <x:String x:Key="IconRoute">&#xeacd;</x:String>
+
 
 
 

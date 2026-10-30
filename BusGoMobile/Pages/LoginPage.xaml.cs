@@ -59,7 +59,6 @@ public partial class LoginPage : ContentPage
             return;
         }
 
-        // Loading state
         SetBusy(true);
 
         var user = await _db.GetUserAsync(EmailEntry.Text.Trim(), PasswordEntry.Text);
@@ -71,12 +70,14 @@ public partial class LoginPage : ContentPage
             await DisplayAlert("Giriş Başarısız", "E-posta veya şifre hatalı.", "Tamam");
             return;
         }
+
         // Oturum bilgisini kaydet
         Preferences.Set("UserId", user.Id);
         Preferences.Set("UserName", user.FirstName);
 
-
-        await Shell.Current.GoToAsync("//HomePage");
+        //await Shell.Current.GoToAsync("//HomePage");
+        await Shell.Current.GoToAsync("//AccountLoadingPage");
+        //await Shell.Current.GoToAsync("//LoginSuccessPage");
     }
 
     private void SetBusy(bool busy)
